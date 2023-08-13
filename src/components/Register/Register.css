@@ -57,11 +57,11 @@
 
 .register__input_type_error {
   color: #ee3465;
-  margin: 0 auto 10px;
+  margin: 0 auto 5px;
 }
 
 .register__error-message {
-  margin: 0;
+  margin: 0 0 10px;
   color: #EE3465;
   font-size: 10px;
   font-style: normal;
@@ -69,8 +69,15 @@
   line-height: normal;
 }
 
-.register__button {
+.register__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 65px;
+}
+
+.register__button {
+  display: block;
   cursor: pointer;
   border-radius: 3px;
   background-color: #4285F4;
@@ -86,6 +93,23 @@
 
 .register__button:hover {
   opacity: .8;
+}
+
+.register__button_disabled {
+  background: #f8f8f8;
+  color: #c2c2c2;
+  cursor: default;
+}
+
+.register__error-message_main {
+  display: block;
+  text-align: center;
+  margin: 0 0 20px;
+  color: #EE3465;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .register__question {
@@ -132,9 +156,12 @@
     margin: 50px 0 80px;
   }
 
+  .register__wrapper {
+    margin-top: 149px;
+  }
+
   .register__button {
     font-size: 12px;
-    margin-top: 149px;
   }
 
   .register__question {

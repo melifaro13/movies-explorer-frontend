@@ -1,12 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import CurrentUserContext from '../../context/CurrentUserContext'
 
 import Header from '../Header/Header'
 
-export default function Profile() {
+export default function Profile({ onSignOut }) {
 
-  const [name, setName] = useState('Андрей');
-  const [email, setEmail] = useState('yandex@yandex.ru');
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const { currentUser, isLoading } = useContext(CurrentUserContext);
   const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    setName(currentUser?.name);
+    setEmail(currentUser?.email);
+  }, [currentUser])
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -28,7 +35,7 @@ export default function Profile() {
       <Header backgroundColor="#202020" theme={{ default: false }} />
       <section className='profile'>
         <div className='profile__container'>
-          <h2 className='profile__title'>{`Привет, ${name}!`}</h2>
+          <h2 className='profile__title'>Привет, {currentUser?.name}!</h2>
           <div className='profile__name'>
             <label htmlFor='name' className='profile__name-label'>
               Имя
@@ -53,7 +60,13 @@ export default function Profile() {
               <button type='button' className='profile__button-edit' href='/' onClick={handleEditClick} aria-label='Редактировать профиль'>
                 Редактировать
               </button>
-              <button type='button' className='profile__button-exit' href='/signout' aria-label='Выйти из аккаунта'>
+              <button
+                type='button'
+                className='profile__button-exit'
+                href='/signout'
+                aria-label='Выйти из аккаунта'
+                onClick={onSignOut}
+                disabled={isLoading}>
                 Выйти из аккаунта
               </button>
             </>
