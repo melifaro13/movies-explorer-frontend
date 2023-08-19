@@ -8,7 +8,9 @@ import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile"
+import mainApi from '../../utils/MainApi';
 import * as auth from '../../utils/auth';
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -71,6 +73,19 @@ function App() {
     setLoggedIn(false);
   }
 
+  function handleChangeUserInfo(newUserInfo) {
+    setIsLoading(true);
+    mainApi.updateUserInfo(newUserInfo)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        //showInfoMessage(EDIT_PROFILE_SUCCESS_MESSAGE);
+      })
+      .catch((err) => {
+        setErrorAuthMessage(err);
+      })
+      .finally(() => setIsLoading(false));
+  }
+
   return (
     <CurrentUserContext.Provider value={{ currentUser, loggedIn, isLoading, setIsLoading }}>
       <div className="page">
@@ -81,7 +96,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/profile" element={<Profile element={Profile} onSignOut={handleSignOut}/>} />
+        <Route path="/profile" element={<Profile element={Profile} onSignOut={handleSignOut} onChangeUserInfo={handleChangeUserInfo} errorMessage={errorAuthMessage} setErrorAuthMessage={setErrorAuthMessage} />} />
       </Routes>
       </div>
     </CurrentUserContext.Provider>

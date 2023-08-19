@@ -26,10 +26,7 @@ class MainApi {
       method: 'PATCH',
       credentials: 'include',
       headers: this._headers,
-      body: JSON.stringify({
-        name: data.name,
-        email: data.email,
-      }),
+      body: JSON.stringify(data),
     }).then(res => this._checkResponse(res));
   }
 
@@ -38,7 +35,15 @@ class MainApi {
       method: 'GET',
       credentials: 'include',
       headers: this._headers,
-    }).then(res => this._checkResponse(res));
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      if (res.status === 409) {
+        return Promise.reject('Пользователь с таким email уже существует');
+      }
+      return Promise.reject('При обновлении профиля произошла ошибка');
+    });
   }
 
   addMovies(data) {
