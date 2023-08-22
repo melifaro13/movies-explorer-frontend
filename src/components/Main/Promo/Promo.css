@@ -1,5 +1,5 @@
 .promo {
-  padding-top:75px;
+  padding-top: 75px;
   padding-bottom: 75px;
   background-color: #073042;
 }
@@ -9,7 +9,7 @@
   max-width: 1140px;
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .promo__box {
@@ -38,26 +38,26 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .promo__link {
   cursor: pointer;
   border-radius: 3px;
-  border: 1px solid #FFF;
-  opacity: .6;
+  border: 1px solid #fff;
+  opacity: 0.6;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
-  color: #FFF;
+  color: #fff;
   text-decoration: none;
   padding: 10px 20px;
-  transition: opacity .2s linear;
+  transition: opacity 0.2s linear;
 }
 
 .promo__link:hover {
-  opacity: .9;
+  opacity: 0.9;
 }
 
 .promo__logo {

@@ -92,6 +92,11 @@
 
 /* <Profile> */
 @import url('./components/Profile/Profile.css');
+
+/* <Infotooltip> */
+@import url('./components/InfoTooltip/IInfotooltip.css');
+/* </Infotooltip> */
+
 /* </Profile> */
 
 

@@ -29,7 +29,7 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
     };
   }, [setErrorAuthMessage]);
 
-  const handleChangeInput = (e) => {
+  const handleChangeInfo = (e) => {
     setErrorAuthMessage('');
     handleChange(e);
     const updatedName = e.target.name === 'name' ? e.target.value : values.name;
@@ -52,18 +52,6 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
     setIsEditing(true);
   };
 
-  // const handleNameChange = (event) => {
-  //   setName(event.target.value);
-  // };
-
-  // const handleEmailChange = (event) => {
-  //   setEmail(event.target.value);
-  // };
-
-  // const handleSaveClick = () => {
-  //   setIsEditing(false);
-  // };
-
   return (
     <>
       <Header backgroundColor="#202020" theme={{ default: false }} />
@@ -80,7 +68,7 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
               name='name'
               minLength='2'
               value={values.name || name}
-              onChange={handleChangeInput}
+              onChange={handleChangeInfo}
               className={`profile__field-name ${errors.name}`} /> :
               <span className='profile__name-value'>{name}</span>}
           </div>
@@ -93,13 +81,13 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
               type='email'
               name='email'
               value={values.email || email}
-              onChange={handleChangeInput}
+              onChange={handleChangeInfo}
               className={`profile__field-name ${errors.email}`} /> :
               <span className='profile__email-value'>{email}</span>}
           </div>
           {isEditing ? (
             <>
-              <span className='profile__error'>При обновлении профиля произошла ошибка.</span>
+              <span className='profile__error'>{errorMessage}</span>
               <button
                 type='submit'
                 className={`profile__save-button ${!isValid || errorMessage ? 'profile__save-button_disabled' : ''}`}
