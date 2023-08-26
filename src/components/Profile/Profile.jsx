@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useFormWithValidation } from '../../utils/useFormWithValidation';
 import CurrentUserContext from '../../context/CurrentUserContext'
+import { ErrorAuthMessage } from '../../utils/constants';
 
 import Header from '../Header/Header'
 
@@ -35,7 +36,7 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
     const updatedName = e.target.name === 'name' ? e.target.value : values.name;
     const updatedEmail = e.target.name === 'email' ? e.target.value : values.email;
     if (updatedName === currentUser?.name && updatedEmail === currentUser?.email) {
-      setErrorAuthMessage('Такие данные уже используются. Измените данные.');
+      setErrorAuthMessage(ErrorAuthMessage);
     }
   };
 
@@ -48,7 +49,7 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
     setIsEditing(false);
   };
 
-  const handleEditClick = () => {
+  const handleChangeClick = () => {
     setIsEditing(true);
   };
 
@@ -62,29 +63,37 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
             <label htmlFor='name' className='profile__name-label'>
               Имя
             </label>
-            {isEditing ?
-            <input
-              type='text'
-              name='name'
-              minLength='2'
-              value={values.name || name}
-              onChange={handleChangeInfo}
-              className={`profile__field-name ${errors.name}`} /> :
-              <span className='profile__name-value'>{name}</span>}
+            {isEditing ? (
+            <div className='profile__field-container'>
+              <input
+                type='text'
+                name='name'
+                minLength='2'
+                value={values.name || name}
+                onChange={handleChangeInfo}
+                className={`profile__field-name ${errors.name}`} />
+              <span className='profile__error-message'>{errors.name}</span>
+            </div>
+            ) : (
+              <span className='profile__name-value'>{name}</span>)}
           </div>
           <div className='profile__email'>
             <label htmlFor='email' className='profile__email-label'>
               E-mail
             </label>
-            {isEditing ?
-            <input
-              type='email'
-              name='email'
-              value={values.email || email}
-              onChange={handleChangeInfo}
-              className={`profile__field-name ${errors.email}`} /> :
-              <span className='profile__email-value'>{email}</span>}
-          </div>
+            {isEditing ? (
+            <div className='profile__field-container'>
+              <input
+                type='email'
+                name='email'
+                value={values.email || email}
+                onChange={handleChangeInfo}
+                className={`profile__field-name ${errors.email}`} />
+              <span className='profile__error-message'>{errors.email}</span>
+            </div>
+            ) : (
+                <span className='profile__email-value'>{email}</span>)}
+            </div>
           {isEditing ? (
             <>
               <span className='profile__error'>{errorMessage}</span>
@@ -102,7 +111,7 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
                 type='button'
                 className='profile__button-edit'
                 href='/'
-                onClick={handleEditClick}
+                onClick={handleChangeClick}
                 aria-label='Редактировать профиль'>
                 Редактировать
               </button>

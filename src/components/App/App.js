@@ -10,15 +10,19 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import InfoTooltip from '../InfoTooltip/Infotooltip';
+import ErrorTooltip from '../ErrorTooltip/ErrorTooltip';
 import { useDoneMessageHandling } from '../../utils/useDoneMessageHandling'
+import { useErrorMessageHandling } from '../../utils/useErrorMessageHandling';
 import mainApi from "../../utils/MainApi";
 import * as auth from "../../utils/auth";
+import { SucsessChangeInfo } from "../../utils/constants";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [loggedIn, setLoggedIn] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [errorAuthMessage, setErrorAuthMessage] = useState("");
+  const [errorCancelMessage, showErrorMessage] = useErrorMessageHandling();
   const [doneMessage, showDoneMessage] = useDoneMessageHandling();
   const navigate = useNavigate();
 
@@ -70,11 +74,11 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  function handleSignOut() {
+  function handleLogOut() {
     setIsLoading(true);
     auth
       .logout()
-      .catch(() => console.log("Что-то пошло не так"))
+      .catch((error) => showErrorMessage(error))
       .finally(() => setIsLoading(false));
     localStorage.clear();
     setLoggedIn(false);
@@ -86,7 +90,7 @@ function App() {
       .updateUserInfo(newUserInfo)
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
-        showDoneMessage("Данные успешно изменены!");
+        showDoneMessage(SucsessChangeInfo);
       })
       .catch((err) => {
         setErrorAuthMessage(err);
@@ -124,14 +128,30 @@ function App() {
             }
           />
           <Route path="/" element={<Main />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/saved-movies" element={<SavedMovies />} />
+          <Route
+            path="/movies"
+            element={
+              <ProtectedRouteElement
+                element={Movies}
+                showError={showErrorMessage}
+              />
+            }
+          />
+          <Route
+            path="/saved-movies"
+            element={
+              <ProtectedRouteElement
+                element={SavedMovies}
+                showError={showErrorMessage}
+              />
+            }
+          />
           <Route
             path="/profile"
             element={
               <ProtectedRouteElement
                 element={Profile}
-                onSignOut={handleSignOut}
+                onSignOut={handleLogOut}
                 onChangeUserInfo={handleChangeUserInfo}
                 errorMessage={errorAuthMessage}
                 setErrorAuthMessage={setErrorAuthMessage}
@@ -139,6 +159,7 @@ function App() {
             }
           />
         </Routes>
+        <ErrorTooltip errorMessage={errorCancelMessage} />
         <InfoTooltip doneMessage={doneMessage} />
       </div>
     </CurrentUserContext.Provider>

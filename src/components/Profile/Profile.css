@@ -46,6 +46,23 @@
   line-height: normal;
 }
 
+.profile__error-message {
+  flex-basis: 100%;
+  min-height: 12px;
+  margin: 0;
+  padding: 0;
+  color: #ee3465;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.profile__field-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .profile__field-name {
   display: block;
   width: auto;

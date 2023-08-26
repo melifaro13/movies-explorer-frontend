@@ -1,4 +1,4 @@
-import { MainApi_BASE_URL } from './constants';
+import { MainApi_BASE_URL, EmailIsAlreadyExists, ProfileError, IncorrectEmailOrPassword  } from './constants';
 
 export function register(name, email, password) {
   return fetch(`${MainApi_BASE_URL}/signup`, {
@@ -14,9 +14,9 @@ export function register(name, email, password) {
        return response.json();
       }
       if (response.status === 409) {
-        return Promise.reject('Пользователь с таким email уже существует');
+        return Promise.reject(EmailIsAlreadyExists);
       }
-      return Promise.reject('При регистрации пользователя произошла ошибка');
+      return Promise.reject(ProfileError);
     });
 };
 
@@ -34,9 +34,9 @@ export function login(email, password) {
       return response.json();
     }
     if (response.status === 401) {
-      return Promise.reject('Вы ввели неправильную почту или пароль');
+      return Promise.reject(IncorrectEmailOrPassword);
     }
-    return Promise.reject('При регистрации пользователя произошла ошибка');
+    return Promise.reject(ProfileError);
   });
 };
 

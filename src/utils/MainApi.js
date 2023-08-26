@@ -1,4 +1,4 @@
-import { MainApi_BASE_URL, MovieApi_BASE_URL } from './constants';
+import { MainApi_BASE_URL, MovieApi_BASE_URL, EmailIsAlreadyExists, ProfileError } from './constants';
 
 class MainApi {
   constructor(option) {
@@ -30,20 +30,12 @@ class MainApi {
     }).then(res => this._checkResponse(res));
   }
 
-  getMovies() {
+  getAllMovies() {
     return fetch(`${this._baseUrl}/movies`, {
       method: 'GET',
       credentials: 'include',
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      if (res.status === 409) {
-        return Promise.reject('Пользователь с таким email уже существует');
-      }
-      return Promise.reject('При обновлении профиля произошла ошибка');
-    });
+    }).then((res) => this._checkResponse(res));
   }
 
   addMovies(data) {

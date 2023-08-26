@@ -1,18 +1,7 @@
-import { useState, useEffect } from 'react';
-
 import Preloader from './Preloader/Preloader';
 import MoviesCard from "./MoviesCard/MoviesCard";
 
-export default function MoviesCardList({ filmList }) {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
+export default function MoviesCardList({ movies, isLoading }) {
 
   return (
     <section className="moviescards">
@@ -22,11 +11,11 @@ export default function MoviesCardList({ filmList }) {
         ) : (
           <>
             <ul className='moviescards__list'>
-                {filmList.map((film, index) => (
-                  <MoviesCard key={index} film={film} />
+                {movies.map((movie) => (
+                  <MoviesCard key={movie.id || movie.movieId} movie={movie} />
                 ))}
             </ul>
-            {filmList.length > 14 && (
+            {movies.length > 14 && (
               <button className="moviescards__more">Ещё</button>
             )}
           </>
