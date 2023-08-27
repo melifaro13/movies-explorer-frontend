@@ -1,0 +1,46 @@
+.moviescards {
+  padding-bottom: 100px;
+  background-color: #202020;
+}
+
+.moviescards__more {
+  cursor: pointer;
+  margin: 76px auto 0;
+  display: block;
+  width: 320px;
+  height: 36px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: transparent;
+  border: 1px #424242 solid;
+  border-radius: 6px;
+  transition: opacity .2s linear;
+}
+
+.moviescards__more:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .moviescards {
+    padding-top: 70px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .moviescards {
+    padding-top: 40px;
+  }
+
+  .moviescards__more {
+    margin: 80px auto 0;
+    width: 240px;
+  }
+}

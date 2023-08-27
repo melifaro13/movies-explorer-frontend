@@ -61,12 +61,13 @@
 /* </Footer> */
 
 /* <Moovies> */
+@import url('./components/Movies/Movies.css');
 
 /* <SeachForm> */
 @import url('./components/Movies/SearchForm/SeachForm.css');
 
 /* <FilterCheckbox> */
-@import url('./components/Movies/SearchForm/FilterCheckbox/FilterCheckbox.css');
+@import url('./components/Movies/FilterCheckbox/FilterCheckbox.css');
 /* </FilterCheckbox> */
 
 /* </SeachForm> */

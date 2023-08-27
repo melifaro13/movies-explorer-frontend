@@ -27,10 +27,4 @@ const findScreenSize = (screenWidth) => {
   }
 };
 
-const convertDuration = (number) => {
-  const hours = Math.floor(number / 60);
-  const minutes = number % 60;
-  return `${hours}ч ${minutes}м`;
-};
-
-export { updateFilteredMovies, findScreenSize, convertDuration };
+export { updateFilteredMovies, findScreenSize };

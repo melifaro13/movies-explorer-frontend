@@ -1,4 +1,4 @@
-import { MainApi_BASE_URL, MovieApi_BASE_URL, EmailIsAlreadyExists, ProfileError } from './constants';
+import { MainApi_BASE_URL, MovieApi_BASE_URL } from './constants';
 
 class MainApi {
   constructor(option) {

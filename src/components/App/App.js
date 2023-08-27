@@ -18,8 +18,8 @@ import * as auth from "../../utils/auth";
 import { SucsessChangeInfo } from "../../utils/constants";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
   const [loggedIn, setLoggedIn] = useState(true);
+  const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorAuthMessage, setErrorAuthMessage] = useState("");
   const [errorCancelMessage, showErrorMessage] = useErrorMessageHandling();
@@ -98,6 +98,15 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
+  const handleDeleteButtonClick = (movieId) => {
+    mainApi
+      .deleteMovie(movieId)
+      .then(() => {})
+      .catch((error) => {
+        showErrorMessage(error);
+      });
+  };
+
   return (
     <CurrentUserContext.Provider
       value={{ currentUser, loggedIn, isLoading, setIsLoading }}
@@ -134,6 +143,7 @@ function App() {
               <ProtectedRouteElement
                 element={Movies}
                 showError={showErrorMessage}
+                onDelete={handleDeleteButtonClick}
               />
             }
           />
@@ -143,6 +153,7 @@ function App() {
               <ProtectedRouteElement
                 element={SavedMovies}
                 showError={showErrorMessage}
+                onDelete={handleDeleteButtonClick}
               />
             }
           />
