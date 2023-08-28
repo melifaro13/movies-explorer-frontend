@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { useFormWithValidation } from '../../utils/useFormWithValidation';
 import CurrentUserContext from '../../context/CurrentUserContext'
 import { ErrorAuthMessage } from '../../utils/constants';
@@ -10,7 +10,10 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
   const [email, setEmail] = useState(null);
   const { currentUser, isLoading } = useContext(CurrentUserContext);
   const [isProfileChanged, setIsProfileChanged] = useState(false);
-  const { values, handleChange, errors, isValid } = useFormWithValidation();
+  const { values, handleChange, errors, isValid, setIsValid } = useFormWithValidation();
+
+  const prevNameRef = useRef(name);
+  const prevEmailRef = useRef(email);
 
   useEffect(() => {
     setName(currentUser?.name);
@@ -30,12 +33,10 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
     };
   }, [setErrorAuthMessage]);
 
-  const handleChangeInfo = (e) => {
+  const handleChangeInput = (e) => {
     setErrorAuthMessage('');
     handleChange(e);
-    const updatedName = e.target.name === 'name' ? e.target.value : values.name;
-    const updatedEmail = e.target.name === 'email' ? e.target.value : values.email;
-    if (updatedName === currentUser?.name && updatedEmail === currentUser?.email) {
+    if (prevNameRef.current.value === currentUser?.name && prevEmailRef.current.value === currentUser?.email) {
       setErrorAuthMessage(ErrorAuthMessage);
     }
   };
@@ -51,6 +52,7 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
       email: values.email || email,
     });
     setIsProfileChanged(false);
+    setIsValid(false);
   };
 
   return (
@@ -70,7 +72,8 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
                 name='name'
                 minLength='2'
                 value={values.name || name}
-                onChange={handleChangeInfo}
+                ref={prevNameRef}
+                onChange={handleChangeInput}
                 className={`profile__field-name ${errors.name}`} />
               <span className='profile__error-message'>{errors.name}</span>
             </div>
@@ -87,7 +90,8 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
                 type='email'
                 name='email'
                 value={values.email || email}
-                onChange={handleChangeInfo}
+                ref={prevEmailRef}
+                onChange={handleChangeInput}
                 className={`profile__field-name ${errors.email}`} />
               <span className='profile__error-message'>{errors.email}</span>
             </div>
