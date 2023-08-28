@@ -9,7 +9,7 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
   const [name, setName] = useState(null);
   const [email, setEmail] = useState(null);
   const { currentUser, isLoading } = useContext(CurrentUserContext);
-  const [isEditing, setIsEditing] = useState(false);
+  const [isProfileChanged, setIsProfileChanged] = useState(false);
   const { values, handleChange, errors, isValid } = useFormWithValidation();
 
   useEffect(() => {
@@ -19,14 +19,14 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
 
   useEffect(() => {
     if (errorMessage) {
-      setIsEditing(true);
+      setIsProfileChanged(true);
     }
   }, [errorMessage])
 
   useEffect(() => {
     return () => {
       setErrorAuthMessage('');
-      setIsEditing(false);
+      setIsProfileChanged(false);
     };
   }, [setErrorAuthMessage]);
 
@@ -40,17 +40,17 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
     }
   };
 
+  const handleChangeClick = () => {
+    setIsProfileChanged(true);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onChangeUserInfo({
       name: values.name || name,
       email: values.email || email,
     });
-    setIsEditing(false);
-  };
-
-  const handleChangeClick = () => {
-    setIsEditing(true);
+    setIsProfileChanged(false);
   };
 
   return (
@@ -63,7 +63,7 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
             <label htmlFor='name' className='profile__name-label'>
               Имя
             </label>
-            {isEditing ? (
+            {isProfileChanged ? (
             <div className='profile__field-container'>
               <input
                 type='text'
@@ -81,7 +81,7 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
             <label htmlFor='email' className='profile__email-label'>
               E-mail
             </label>
-            {isEditing ? (
+            {isProfileChanged ? (
             <div className='profile__field-container'>
               <input
                 type='email'
@@ -94,13 +94,13 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
             ) : (
                 <span className='profile__email-value'>{email}</span>)}
             </div>
-          {isEditing ? (
+          {isProfileChanged ? (
             <>
               <span className='profile__error'>{errorMessage}</span>
               <button
                 type='submit'
-                className={`profile__save-button ${!isValid || errorMessage ? 'profile__save-button_disabled' : ''}`}
                 disabled={!isValid || errorMessage || isLoading}
+                className={`profile__save-button ${!isValid || errorMessage ? 'profile__save-button_disabled' : ''}`}
                 aria-label='Сохранить данные'>
                 Сохранить
               </button>

@@ -34,9 +34,9 @@ export function login(email, password) {
       return response.json();
     }
     if (response.status === 401) {
-      return Promise.reject(IncorrectEmailOrPassword);
+      throw new Error(IncorrectEmailOrPassword);
     }
-    return Promise.reject(ProfileError);
+    throw new Error(ProfileError);
   });
 };
 
@@ -63,13 +63,20 @@ export function logout() {
 
 export function getToken() {
   return fetch(`${MainApi_BASE_URL}/users/me`, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
     credentials: "include",
-  })
-  .then((res) => res.json())
-  .then((data) => data);
-};
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return res.json().then((data) => Promise.reject(data.message));
+    }
+  });
+}
+
+
+

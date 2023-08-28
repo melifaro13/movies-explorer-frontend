@@ -1,8 +1,6 @@
-//const MainApi_BASE_URL = "https://api.melifaro1304.nomoredomains.xyz";
-const MainApi_BASE_URL = "http://localhost:4000";
+const MainApi_BASE_URL = "https://api.melifaro1304.nomoredomains.xyz";
+//const MainApi_BASE_URL = "http://localhost:4000";
 const MovieApi_BASE_URL = "https://api.nomoreparties.co";
-
-const authPages = ["/movies", "/saved-movies", "/profile"];
 
 const ShortFilmDuration = 40;
 
@@ -21,7 +19,7 @@ const ScreenSizeMap = {
 
 export {
   MainApi_BASE_URL,
-  MovieApi_BASE_URL, authPages,
+  MovieApi_BASE_URL,
   SucsessChangeInfo,
   ErrorAuthMessage,
   EmailIsAlreadyExists,

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 
 import movieApi from '../../utils/MoviesApi';
-import { updateFilteredMovies, findScreenSize } from '../../utils/utils';
+import { updateFilteredMovies, findScreenSize } from '../../utils/items';
 import useLocalStorage from '../../utils/useLocalStorage';
 import mainApi from '../../utils/MainApi';
 import CurrentUserContext from '../../context/CurrentUserContext';
@@ -22,7 +22,7 @@ export default function Movies({ showError, onDelete }) {
   const [isShortMovieChecked, setIsShortMovieChecked] = useLocalStorage('isShortMovieChecked', false);
   const [searchMovie, setSearchMovie] = useLocalStorage('searchMovie', '');
   const [displayedMoviesCount, setDisplayedMoviesCount] = useState(screenSize.cards);
-  const moviesToShow = filteredMovies.slice(0, displayedMoviesCount);
+  const moviesWatch = filteredMovies.slice(0, displayedMoviesCount);
 
 
   useEffect(() => {
@@ -92,13 +92,7 @@ export default function Movies({ showError, onDelete }) {
       .then((addedMovie) => {
         setMovies((prevMovies) =>
           prevMovies.map((film) =>
-            film.id === addedMovie.movieId
-              ? {
-                  ...film,
-                  isSaved: true,
-                  _id: addedMovie._id,
-                }
-              : film,
+            film.id === addedMovie.movieId ? { ...film, isSaved: true, _id: addedMovie._id } : film,
           ),
         );
       })
@@ -111,13 +105,7 @@ export default function Movies({ showError, onDelete }) {
     onDelete(movieId);
     setMovies((prev) =>
       prev.map((film) =>
-        film._id === movieId
-          ? {
-              ...film,
-              isSaved: false,
-              _id: null,
-            }
-          : film,
+        film._id === movieId ? { ...film, isSaved: false, _id: null, } : film,
       ),
     );
   }
@@ -166,7 +154,7 @@ export default function Movies({ showError, onDelete }) {
         <FilterCheckbox onCheckboxChange={handleShortMovieChange} isShortMovieChecked={isShortMovieChecked} />
         <section className="moviescards">
           <MoviesCardList
-            movies={moviesToShow}
+            movies={moviesWatch}
             searchError={searchError}
             noResults={noResults}
             isLoading={isLoading}

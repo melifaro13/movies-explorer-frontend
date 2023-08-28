@@ -5,7 +5,7 @@ import FilterCheckbox from '../Movies/FilterCheckbox/FilterCheckbox';
 import Footer from '../Footer/Footer';
 
 import mainApi from '../../utils/MainApi';
-import { updateFilteredMovies } from '../../utils/utils';
+import { updateFilteredMovies } from '../../utils/items';
 import { useState, useEffect, useContext } from 'react';
 import CurrentUserContext from '../../context/CurrentUserContext';
 

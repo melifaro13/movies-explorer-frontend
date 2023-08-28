@@ -27,7 +27,7 @@
   opacity: .7;
 }
 
-.nav__moovie_active {
+.nav__moovie.active {
   font-weight: 500;
 }
 
@@ -151,7 +151,7 @@
     display: block;
   }
 
-  .nav__navigation_active .nav__moovie_active::after {
+  .nav__navigation_active .nav__moovie.active::after {
     display: block;
   }
 
