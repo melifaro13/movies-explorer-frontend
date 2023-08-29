@@ -15,7 +15,7 @@ export default function Navigation() {
       <nav className={`nav__navigation ${isMenuOpen ? "nav__navigation_active" : ""}`}>
         <div className="nav__box">
           {isMenuOpen && (
-            <Link to="/" className="nav__moovie">Главная</Link>
+            <NavLink to="/" className="nav__moovie">Главная</NavLink>
           )}
           <NavLink to="/movies" className="nav__moovie">Фильмы</NavLink>
           <NavLink to="/saved-movies" className="nav__moovie">Сохраненные фильмы</NavLink>
