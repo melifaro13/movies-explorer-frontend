@@ -34,9 +34,9 @@ export function login(email, password) {
       return response.json();
     }
     if (response.status === 401) {
-      throw new Error(IncorrectEmailOrPassword);
+      return Promise.reject(IncorrectEmailOrPassword);
     }
-    throw new Error(ProfileError);
+    return Promise.reject(ProfileError);
   });
 };
 
