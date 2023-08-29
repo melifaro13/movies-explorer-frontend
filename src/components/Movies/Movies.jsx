@@ -21,7 +21,7 @@ export default function Movies({ showError, onDelete }) {
   const [filteredMovies, setFilteredMovies] = useLocalStorage('movies', []);
   const [isShortMovieChecked, setIsShortMovieChecked] = useLocalStorage('isShortMovieChecked', false);
   const [searchMovie, setSearchMovie] = useLocalStorage('searchMovie', '');
-  const [displayedMoviesCount, setDisplayedMoviesCount] = useState(screenSize.cards);
+  const [displayedMoviesCount, setDisplayedMoviesCount] = useState(screenSize.films);
   const moviesWatch = filteredMovies.slice(0, displayedMoviesCount);
 
 
@@ -49,8 +49,8 @@ export default function Movies({ showError, onDelete }) {
   }, []);
 
   useEffect(() => {
-    setDisplayedMoviesCount(screenSize.cards);
-  }, [screenSize.cards]);
+    setDisplayedMoviesCount(screenSize.films);
+  }, [screenSize.films]);
 
   useEffect(() => {
     let resizeTimeout;
@@ -59,7 +59,7 @@ export default function Movies({ showError, onDelete }) {
       resizeTimeout = setTimeout(() => {
         const newSize = findScreenSize(window.innerWidth);
         setScreenSize(newSize);
-        setDisplayedMoviesCount(newSize.cards);
+        setDisplayedMoviesCount(newSize.films);
       }, 500);
     };
 

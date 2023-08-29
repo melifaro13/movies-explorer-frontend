@@ -27,8 +27,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    auth
-      .getToken()
+    auth.getToken()
       .then((res) => {
         setLoggedIn(true);
         setCurrentUser(res);
@@ -38,7 +37,7 @@ function App() {
       });
   }, []);
 
-  const handleSuccessAuthAction = (res, resetForm) => {
+  const handleSuccessAuthorization = (res, resetForm) => {
     setErrorAuthMessage("");
     resetForm();
     setLoggedIn(true);
@@ -48,10 +47,9 @@ function App() {
 
   function handleSignUp(name, email, password, resetForm) {
     setIsLoading(true);
-    auth
-      .register(name, email, password)
+    auth.register(name, email, password)
       .then((res) => {
-        handleSuccessAuthAction(res, resetForm);
+        handleSuccessAuthorization(res, resetForm);
       })
       .catch((err) => {
         setErrorAuthMessage(err);
@@ -61,11 +59,10 @@ function App() {
 
   function handleSignIn(email, password, resetForm) {
     setIsLoading(true);
-    auth
-      .login(email, password)
+    auth.login(email, password)
       .then((res) => {
         console.log(res);
-        handleSuccessAuthAction(res, resetForm);
+        handleSuccessAuthorization(res, resetForm);
         navigate("/movies", { replace: true });
       })
       .catch((err) => {
@@ -76,8 +73,7 @@ function App() {
 
   function handleLogOut() {
     setIsLoading(true);
-    auth
-      .logout()
+    auth.logout()
       .catch((error) => showErrorMessage(error))
       .finally(() => setIsLoading(false));
     localStorage.clear();
