@@ -102,12 +102,17 @@ export default function Movies({ showError, onDelete }) {
   };
 
   function handleDelete(movieId) {
-    onDelete(movieId);
-    setMovies((prev) =>
-      prev.map((film) =>
-        film._id === movieId ? { ...film, isSaved: false, _id: null, } : film,
-      ),
-    );
+    onDelete(movieId)
+      .then(() => {
+        setMovies((prev) =>
+          prev.map((film) =>
+            film._id === movieId ? {...film, isSaved: false, _id: null, } : film
+          )
+        );
+      })
+      .catch((error) => {
+        showError(error);
+      });
   }
 
   const handleFilter = (check) => {

@@ -95,12 +95,7 @@ function App() {
   }
 
   const handleDeleteButtonClick = (movieId) => {
-    mainApi
-      .deleteMovie(movieId)
-      .then(() => {})
-      .catch((error) => {
-        showErrorMessage(error);
-      });
+    return mainApi.deleteMovie(movieId);
   };
 
   return (

@@ -36,6 +36,7 @@ export default function Login({ onSignIn, errorMessage, setErrorAuthMessage }) {
               name="email"
               minLength='4'
               required
+              pattern='^\S+@\S+\.\S+$'
               className={`login__input ${errors.email}`}
               value={values.email || ''}
               onChange={handleChangeInput}

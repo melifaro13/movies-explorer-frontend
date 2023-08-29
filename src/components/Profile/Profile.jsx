@@ -73,6 +73,7 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
                 minLength='2'
                 value={values.name || name}
                 ref={prevNameRef}
+                pattern='^[A-Za-zА-Яа-я\s\-]+$'
                 onChange={handleChangeInput}
                 className={`profile__field-name ${errors.name}`} />
               <span className='profile__error-message'>{errors.name}</span>
@@ -91,6 +92,7 @@ export default function Profile({ onSignOut, onChangeUserInfo, errorMessage, set
                 name='email'
                 value={values.email || email}
                 ref={prevEmailRef}
+                pattern='^\S+@\S+\.\S+$'
                 onChange={handleChangeInput}
                 className={`profile__field-name ${errors.email}`} />
               <span className='profile__error-message'>{errors.email}</span>

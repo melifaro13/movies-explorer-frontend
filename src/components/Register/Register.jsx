@@ -32,6 +32,7 @@ export default function Register({ onSignUp, errorMessage, setErrorAuthMessage }
               name="name"
               minLength='2'
               required
+              pattern='^[A-Za-zА-Яа-я\s\-]+$'
               className={`register__input ${errors.name}`}
               value={values.name || ''}
               onChange={handleChangeInput}
@@ -44,6 +45,7 @@ export default function Register({ onSignUp, errorMessage, setErrorAuthMessage }
               name="email"
               minLength='4'
               required
+              pattern='^\S+@\S+\.\S+$'
               className={`register__input ${errors.email}`}
               value={values.email || ''}
               onChange={handleChangeInput}

@@ -8,6 +8,7 @@ const ErrorAuthMessage = "Такие данные уже используютс�
 const EmailIsAlreadyExists = "Пользователь с таким email уже существует";
 const ProfileError = "При обновлении профиля произошла ошибка";
 const IncorrectEmailOrPassword = "Вы ввели неправильную почту или пароль";
+const RequestError = "Ошибка при обработке запроса:";
 
 const ScreenSizeMap = {
   xl: { cards: 16, addCardsNumber: 4 },
@@ -25,5 +26,6 @@ export {
   ProfileError,
   IncorrectEmailOrPassword,
   ScreenSizeMap,
-  ShortFilmDuration
+  ShortFilmDuration,
+  RequestError
 };

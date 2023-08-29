@@ -20,9 +20,14 @@ export default function SavedMovies({ onDelete, showError }) {
   const [searchError, setSearchError] = useState(false);
 
   const handleDelete = (movieId) => {
-    onDelete(movieId);
-    setSavedMovies((prev) => prev.filter((movie) => movie._id !== movieId));
-    setFilteredMovies((prev) => prev.filter((movie) => movie._id !== movieId));
+    onDelete(movieId)
+      .then(() => {
+        setSavedMovies((prev) => prev.filter((movie) => movie._id !== movieId));
+        setFilteredMovies((prev) => prev.filter((movie) => movie._id !== movieId));
+      })
+      .catch((error) => {
+        showError(error);
+      });
   };
 
   useEffect(() => {
