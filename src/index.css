@@ -1,0 +1,108 @@
+@import url('./vendor/normalize.css');
+@import url('./vendor/fonts/fonts.css');
+
+/* <App> */
+@import url('./components/App/App.css');
+
+/* <Page404> */
+@import url('./components/Page404/Page404.css');
+/* </Page404> */
+
+/* <Register> */
+@import url('./components/Register/Register.css');
+/* </Register> */
+
+/* <Login> */
+@import url('./components/Login/Login.css');
+/* </Login> */
+
+/* <Header> */
+@import url('./components/Header/Header.css');
+
+/* <Main> */
+
+/* <Logo> */
+@import url('./components/Logo/Logo.css');
+/* </Logo> */
+
+/* <NavTab> */
+@import url('./components/Main/NavTab/NavTab.css');
+/* </NavTab> */
+
+/* <Navigation> */
+@import url('./components/Navigation/Navigation.css');
+/* </Navigation> */
+/* </Header> */
+
+/* <Promo> */
+@import url('./components/Main/Promo/Promo.css');
+/* </Promo> */
+
+/* <AboutProject> */
+@import url('./components/Main/AboutProject/AboutProject.css');
+/* </AboutProject> */
+
+/* <Techs> */
+@import url('./components/Main/Techs/Techs.css');
+/* </Techs> */
+
+/* <AboutMe> */
+@import url('./components/Main/AboutMe/AboutMe.css');
+/* </AboutMe> */
+
+/* <Portfolio> */
+@import url('./components/Main/Portfolio/Portfolio.css');
+/* </Portfolio> */
+
+/* </Main> */
+
+/* <Footer> */
+@import url('./components/Footer/Footer.css');
+/* </Footer> */
+
+/* <Moovies> */
+@import url('./components/Movies/Movies.css');
+
+/* <SeachForm> */
+@import url('./components/Movies/SearchForm/SeachForm.css');
+
+/* <FilterCheckbox> */
+@import url('./components/Movies/FilterCheckbox/FilterCheckbox.css');
+/* </FilterCheckbox> */
+
+/* </SeachForm> */
+
+/* <MoviesCardList> */
+@import url('./components/Movies/MoviesCardList/MovisCardList.css');
+
+/* <Preloader> */
+@import url('./components/Movies/MoviesCardList/Preloader/Preloader.css');
+/* </Preloader> */
+
+/* <MoviesCard> */
+@import url('./components/Movies/MoviesCardList/MoviesCard/MoviesCard.css');
+/* </MoviesCard> */
+
+/* </MoviesCardList> */
+
+/* <ErrorTooltip> */
+@import url('./components/ErrorTooltip/ErrorTooltip.css');
+/* </ErrorTooltip> */
+
+/* </Moovies> */
+
+/* <SavedMovies> */
+@import url('./components/SavedMovies/SavedMovies.css');
+/* </SavedMovies> */
+
+/* <Profile> */
+@import url('./components/Profile/Profile.css');
+
+/* <Infotooltip> */
+@import url('./components/InfoTooltip/IInfotooltip.css');
+/* </Infotooltip> */
+
+/* </Profile> */
+
+
+/* </App> */

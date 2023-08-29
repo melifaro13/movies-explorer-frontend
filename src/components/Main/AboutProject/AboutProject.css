@@ -1,0 +1,176 @@
+.project {
+  padding-top: 110px;
+  padding-bottom: 110px;
+  background-color: #202020;
+}
+
+.project__container {
+  margin: 0 auto;
+  max-width: 1140px;
+}
+
+.project__about {
+  margin: 0;
+  padding-bottom: 21px;
+  border-bottom: 1px solid #DADADA;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+}
+
+.project__box {
+  margin: 70px 0 110px;
+  display: flex;
+  gap: 52px;
+}
+
+.project__title {
+  margin: 0 0 26px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.8px;
+}
+
+.project__subtitle {
+  margin: 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.project__time-box {
+  display: flex;
+  justify-content: center;
+}
+
+.project__time-title {
+  margin: 0 0 14px;
+  padding: 9px 14px;
+  width: 200px;
+  background-color: #3DDC84;
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.project__time-title_type_grey {
+  padding: 9px 356px;
+  background-color: #303030;
+  color: #FFF;
+}
+
+.project__time-subtitle {
+  margin: 0;
+  color: #8B8B8B;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 1150px) {
+  .project {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  .project__container {
+    margin: 0 50px;
+  }
+
+  .project__about {
+    padding-bottom: 19px;
+  }
+
+  .project__box {
+    margin: 70px 0 93px;
+    gap: 37px;
+  }
+
+  .project__title {
+    margin: 0 0 20px;
+  }
+
+  .project__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .project__time-title {
+    padding: 9px 10px;
+    width: 120px;
+  }
+
+  .project__time-title_type_grey {
+    padding: 9px 206px;
+  }
+}
+
+@media screen and (max-width: 725px) {
+  .project {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .project__container {
+    margin: 0 18px;
+  }
+
+  .project__about {
+    padding-bottom: 28px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .project__box {
+    flex-direction: column;
+    margin: 60px 0;
+    gap: 4px;
+  }
+
+  .project__info {
+    margin-bottom: 56px;
+  }
+
+  .project__info:last-child {
+    margin: 0;
+  }
+
+  .project__title {
+    margin: 0 0 16px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .project__subtitle {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .project__time-title {
+    margin: 0 0 10px;
+    padding: 11px 10px;
+    width: 80px;
+    font-size: 11px;
+  }
+
+  .project__time-title_type_grey {
+    padding: 11px 52px;
+  }
+
+  .project__time-subtitle {
+    font-size: 11px;
+    line-height: normal;
+  }
+}
+
+

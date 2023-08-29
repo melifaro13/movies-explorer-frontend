@@ -1,0 +1,18 @@
+.saved__container {
+  padding-bottom: 90px;
+  background-color: #202020;;
+}
+
+@media screen and (max-width: 1170px) {
+
+  .saved__container {
+    padding-bottom: 231px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
+  .saved__container {
+    padding-bottom: 90px;
+  }
+}

@@ -1,0 +1,155 @@
+.me {
+  padding-top: 110px;
+  padding-bottom: 101px;
+  background-color: #202020;
+}
+
+.me__container {
+  margin: 0 auto;
+  max-width: 1140px;
+}
+
+.me__about {
+  margin: 0;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #DADADA;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+}
+
+.me__box {
+  margin: 66px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.me__name {
+  margin: 0 0 18px;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+}
+
+.me__profession {
+  margin: 0 0 26px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.me__biography {
+  margin: 0 0 99px;
+  max-width: 600px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.me__git {
+  margin: 0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.me__photo {
+  border-radius: 10px;
+  width: 270px;
+  height: 327px;
+}
+
+@media screen and (max-width: 1150px) {
+  .me {
+    padding-top: 90px;
+    padding-bottom: 91px;
+  }
+
+  .me__container {
+    margin: 0 50px;
+  }
+
+  .me__name {
+    margin: 0 0 16px;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.6px;
+  }
+
+  .me__profession {
+    margin: 0 0 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .me__biography {
+    margin: 0 0 101px;
+    max-width: 364px;
+    font-size: 12px;
+    line-height: 19px;
+  }
+
+  .me__photo {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media screen and (max-width: 725px) {
+  .me {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .me__container {
+    margin: 0 14px;
+  }
+
+  .me__about {
+    padding-bottom: 24px;
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+
+  .me__box {
+    margin: 60px 0 0;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .me__info {
+    margin-top: 40px;
+  }
+
+  .me__name {
+    margin: 0 0 20px;
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  }
+
+  .me__profession {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .me__biography {
+    margin: 0 0 55px;
+    max-width: 292px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .me__photo {
+    width: 292px;
+    height: 352px;
+  }
+}
